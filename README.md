@@ -1,29 +1,25 @@
-# boolflix
+# BoolFlix
 
-This template should help get you started developing with Vue 3 in Vite.
 
-## Recommended IDE Setup
+## Milestone 0:
+Progettare la struttura del global state sulla linea degli esercizi svolti nei giorni
+precedenti.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## Milestone 1:
+Creare un layout base con una searchbar (una input e un button) in cui possiamo
+scrivere completamente o parzialmente il nome di un film. Possiamo, cliccando il
+bottone, cercare sull’API tutti i film che contengono ciò che ha scritto l’utente.
+Vogliamo dopo la risposta dell’API visualizzare a schermo i seguenti valori per ogni
+film trovato:
+1. Titolo
+2. Titolo Originale
+3. Lingua
+4. Voto
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
+## Milestone 2:
+Trasformiamo la stringa statica della lingua in una vera e propria bandiera della
+nazione corrispondente, gestendo il caso in cui non abbiamo la bandiera della
+nazione ritornata dall’API.
+Allarghiamo poi la ricerca anche alle serie tv. Con la stessa azione di ricerca
+dovremo prendere sia i film che corrispondono alla query, sia le serie tv, stando
+attenti ad avere alla fine dei valori simili.
