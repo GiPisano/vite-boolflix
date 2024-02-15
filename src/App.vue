@@ -72,7 +72,8 @@ export default{
     </li>
     <li>Voto film: {{ stars(movie) }}
       <span v-for="index in 5">
-        <i class="fa-regular fa-star"></i>
+        <i v-if="index <= stars(movie)" class="fa-solid fa-star"></i>
+        <i v-else class="fa-regular fa-star"></i>
       </span>
     </li>
   </ul>
@@ -85,7 +86,12 @@ export default{
       <span>Lingua serie tv: </span>
       <img :src="iconsflag(tvSerie)" alt="">
     </li>
-    <li>Voto serie tv: {{ stars(tvSerie) }}</li>
+    <li>Voto serie tv: {{ stars(tvSerie) }}
+      <span v-for="index in 5">
+        <i v-if="index <= stars(tvSerie)" class="fa-solid fa-star star"></i>
+        <i v-else class="fa-regular fa-star star"></i>
+      </span>
+    </li>
   </ul>
 
  
@@ -99,7 +105,7 @@ export default{
  
 }
 
-.voteStar{
- background-color: gold;
+.star{
+  color: gold;
 }
 </style>
