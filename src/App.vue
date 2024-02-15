@@ -57,11 +57,12 @@ export default{
 </script>
 
 <template>
-  <h1>Hello BoolFlix</h1>
 
+  <!-- header -->
   <input type="text" v-model="inputValue" @keyup="search()">
   <button @click="search()">Cerca</button>
 
+  <!-- film section -->
   <ul v-for="movie in movies">
     <img :src="pathImg(movie)" alt="">
     <li>Titolo film: {{ movie.title }}</li>
@@ -72,12 +73,13 @@ export default{
     </li>
     <li>Voto film: {{ stars(movie) }}
       <span v-for="index in 5">
-        <i v-if="index <= stars(movie)" class="fa-solid fa-star"></i>
-        <i v-else class="fa-regular fa-star"></i>
+        <i v-if="index <= stars(movie)" class="fa-solid fa-star star"></i>
+        <i v-else class="fa-regular fa-star star"></i>
       </span>
     </li>
   </ul>
 
+  <!-- serie section -->
   <ul v-for="tvSerie in tvSeries">
     <img :src="pathImg(tvSerie)" alt="" v-show="pathImg(tvSerie)">
     <li>Nome serie tv: {{ tvSerie.name }}</li>
