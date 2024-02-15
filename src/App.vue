@@ -13,6 +13,8 @@ export default{
   },
 
   methods:{
+
+    // richiesta axois per film e serie tv
     fetchMovies(){
       axios.get(`${store.uri.apiUri}search/movie?api_key=${store.uri.api_key}&query=${this.inputValue}`).then((res) => {
       this.movies = res.data.results;
@@ -25,11 +27,23 @@ export default{
       })
     },
 
+    // generazioine copertina film e serie tv
+    pathImg(movie){
+     return `${store.uri.imgPhat}${movie.poster_path}`
+    },
+
+    // funzione dell'input 
     search(){
       this.fetchMovies(),
       this.fetchTvSeries()
     },
 
+    // genero stelle in base al voto
+    stars(movie){
+      return Math.floor(movie.vote_average / 2) + 1;
+    },
+
+    // bandiere lingua 
     iconsflag(movie){
       if(movie.original_language == 'en'){return './src/assets/flags/en.png'}
       if(movie.original_language == 'de'){return './src/assets/flags/de.png'}
@@ -39,10 +53,6 @@ export default{
       else{return './src/assets/flags/generalFlag.png'}
     }
   },
-
-  created(){
-   this.search()
-  }
 }
 </script>
 
@@ -53,23 +63,29 @@ export default{
   <button @click="search()">Cerca</button>
 
   <ul v-for="movie in movies">
+    <img :src="pathImg(movie)" alt="">
     <li>Titolo film: {{ movie.title }}</li>
     <li>Titolo originale film: {{ movie.original_title }}</li>
     <li class="img-flag">
       <span>Lingua film: </span>
       <img :src="iconsflag(movie)" alt="">
     </li>
-    <li>Voto film: {{ movie.vote_average }}</li>
+    <li>Voto film: {{ stars(movie) }}
+      <span v-for="index in 5">
+        <i class="fa-regular fa-star"></i>
+      </span>
+    </li>
   </ul>
 
   <ul v-for="tvSerie in tvSeries">
+    <img :src="pathImg(tvSerie)" alt="" v-show="pathImg(tvSerie)">
     <li>Nome serie tv: {{ tvSerie.name }}</li>
     <li>Nome originale serie tv: {{ tvSerie.original_name }}</li>
     <li class="img-flag">
       <span>Lingua serie tv: </span>
       <img :src="iconsflag(tvSerie)" alt="">
     </li>
-    <li>Voto serie tv: {{ tvSerie.vote_average }}</li>
+    <li>Voto serie tv: {{ stars(tvSerie) }}</li>
   </ul>
 
  
@@ -81,5 +97,9 @@ export default{
     max-width: 30px;
   }
  
+}
+
+.voteStar{
+ background-color: gold;
 }
 </style>
