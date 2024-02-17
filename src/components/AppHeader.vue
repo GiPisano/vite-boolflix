@@ -26,9 +26,13 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px;
+    width: 100%;
 
     background-color: black;
     color: white;
+    height: 65px;
+    position: fixed;
+    z-index: 1;
 
     h2{
         color: red;

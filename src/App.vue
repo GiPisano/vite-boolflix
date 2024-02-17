@@ -31,6 +31,7 @@ export default{
           language: movie.original_language,
           vote: Math.floor(movie.vote_average / 2) + 1,
           poster_path: movie.poster_path,
+          overview: movie.overview
         }
       });
       })
@@ -50,7 +51,8 @@ export default{
           original_title: tvSerie.original_name,
           language: tvSerie.original_language,
           vote: Math.floor(tvSerie.vote_average / 2) + 1,
-          poster_path: tvSerie.poster_path
+          poster_path: tvSerie.poster_path,
+          overview: tvSerie.overview
         }
       });
       })
@@ -70,13 +72,17 @@ export default{
 
 
 <template>
+  <div class="container">
+    <app-header @search="performSearch"></app-header> 
 
-  <app-header @search="performSearch"></app-header> 
-
-  <app-main></app-main>
-
+    <app-main></app-main>
+  </div>
 </template>
 
 <style lang="scss">
 @use './styles/general.scss';
+
+.container{
+  overflow: hidden;
+}
 </style>
